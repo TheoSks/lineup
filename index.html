@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Formations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f0f1a;
+            min-height: 100vh;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 32px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: rgba(255,255,255,0.5);
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        /* Pitch Section */
+        .pitch-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .current-formation {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .formation-name {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .pitch-container {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .pitch {
+            width: 100%;
+            aspect-ratio: 68/105;
+            background: linear-gradient(to bottom,
+                #2d8a3e 0%, #2d8a3e 8.33%,
+                #349447 8.33%, #349447 16.66%,
+                #2d8a3e 16.66%, #2d8a3e 25%,
+                #349447 25%, #349447 33.33%,
+                #2d8a3e 33.33%, #2d8a3e 41.66%,
+                #349447 41.66%, #349447 50%,
+                #2d8a3e 50%, #2d8a3e 58.33%,
+                #349447 58.33%, #349447 66.66%,
+                #2d8a3e 66.66%, #2d8a3e 75%,
+                #349447 75%, #349447 83.33%,
+                #2d8a3e 83.33%, #2d8a3e 91.66%,
+                #349447 91.66%, #349447 100%
+            );
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .pitch::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px solid rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        /* Pitch markings */
+        .center-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.85);
+            transform: translateY(-50%);
+        }
+
+        .center-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 22%;
+            aspect-ratio: 1;
+            border: 3px solid rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .center-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .penalty-area-top {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 55%;
+            height: 16%;
+            border: 3px solid rgba(255, 255, 255, 0.85);
+            border-top: none;
+        }
+
+        .goal-area-top {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25%;
+            height: 6%;
+            border: 3px solid rgba(255, 255, 255, 0.85);
+            border-top: none;
+        }
+
+        .penalty-arc-top {
+            position: absolute;
+            top: 13%;
+            left: 50%;
+            width: 18%;
+            height: 9%;
+            border: 3px solid rgba(255, 255, 255, 0.85);
+            border-top: none;
+            border-radius: 0 0 50% 50%;
+            transform: translateX(-50%);
+        }
+
+        .penalty-area-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 55%;
+            height: 16%;
+            border: 3px solid rgba(255, 255, 255, 0.85);
+            border-bottom: none;
+        }
+
+        .goal-area-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25%;
+            height: 6%;
+            border: 3px solid rgba(255, 255, 255, 0.85);
+            border-bottom: none;
+        }
+
+        .penalty-arc-bottom {
+            position: absolute;
+            bottom: 13%;
+            left: 50%;
+            width: 18%;
+            height: 9%;
+            border: 3px solid rgba(255, 255, 255, 0.85);
+            border-bottom: none;
+            border-radius: 50% 50% 0 0;
+            transform: translateX(-50%);
+        }
+
+        .corner-tl, .corner-tr, .corner-bl, .corner-br {
+            position: absolute;
+            width: 3%;
+            aspect-ratio: 1;
+            border: 3px solid rgba(255, 255, 255, 0.85);
+        }
+
+        .corner-tl { top: -3px; left: -3px; border-radius: 0 0 100% 0; border-top: none; border-left: none; }
+        .corner-tr { top: -3px; right: -3px; border-radius: 0 0 0 100%; border-top: none; border-right: none; }
+        .corner-bl { bottom: -3px; left: -3px; border-radius: 0 100% 0 0; border-bottom: none; border-left: none; }
+        .corner-br { bottom: -3px; right: -3px; border-radius: 100% 0 0 0; border-bottom: none; border-right: none; }
+
+        /* Players */
+        .player {
+            position: absolute;
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 13px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .player:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.7);
+            z-index: 20;
+        }
+
+        .player.goalkeeper {
+            background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+            box-shadow: 0 4px 15px rgba(245, 175, 25, 0.5);
+        }
+
+        .player.goalkeeper:hover {
+            box-shadow: 0 6px 25px rgba(245, 175, 25, 0.7);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.08);
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+        }
+
+        .sidebar-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 16px;
+        }
+
+        .category {
+            margin-bottom: 24px;
+        }
+
+        .category-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 10px;
+            padding-left: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-count {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+        }
+
+        .formation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .formation-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 12px 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .formation-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .formation-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Search */
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+
+        .search-input:focus {
+            border-color: rgba(102, 126, 234, 0.5);
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* Info panel */
+        .info-panel {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .info-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 12px;
+        }
+
+        .info-content {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        .info-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .info-tag {
+            background: rgba(255,255,255,0.08);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .info-tag.offensive {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+        }
+
+        .info-tag.defensive {
+            background: rgba(245, 87, 108, 0.2);
+            color: #f5576c;
+        }
+
+        .info-tag.balanced {
+            background: rgba(245, 175, 25, 0.2);
+            color: #f5af19;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            flex: 1;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Football Formations</h1>
+            <p class="subtitle">Sélectionnez une formation pour visualiser le positionnement des joueurs</p>
+        </div>
+
+        <div class="pitch-section">
+            <div class="current-formation" id="currentFormation">4-4-2</div>
+            <div class="formation-name" id="formationName">Classique</div>
+
+            <div class="pitch-container">
+                <div class="pitch">
+                    <div class="center-line"></div>
+                    <div class="center-circle"></div>
+                    <div class="center-dot"></div>
+                    <div class="penalty-area-top"></div>
+                    <div class="goal-area-top"></div>
+                    <div class="penalty-arc-top"></div>
+                    <div class="penalty-area-bottom"></div>
+                    <div class="goal-area-bottom"></div>
+                    <div class="penalty-arc-bottom"></div>
+                    <div class="corner-tl"></div>
+                    <div class="corner-tr"></div>
+                    <div class="corner-bl"></div>
+                    <div class="corner-br"></div>
+
+                    <!-- Players -->
+                    <div class="player goalkeeper" id="player1">1</div>
+                    <div class="player" id="player2">2</div>
+                    <div class="player" id="player3">3</div>
+                    <div class="player" id="player4">4</div>
+                    <div class="player" id="player5">5</div>
+                    <div class="player" id="player6">6</div>
+                    <div class="player" id="player7">7</div>
+                    <div class="player" id="player8">8</div>
+                    <div class="player" id="player9">9</div>
+                    <div class="player" id="player10">10</div>
+                    <div class="player" id="player11">11</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Rechercher une formation...">
+            </div>
+
+            <div class="sidebar-title">Formations</div>
+
+            <div id="formationsContainer">
+                <!-- Formations will be inserted here by JavaScript -->
+            </div>
+
+            <div class="info-panel">
+                <div class="info-title">À propos de cette formation</div>
+                <div class="info-content" id="formationInfo">
+                    Formation équilibrée et polyvalente, idéale pour une approche classique du jeu.
+                </div>
+                <div class="info-tags" id="formationTags">
+                    <span class="info-tag balanced">Équilibré</span>
+                </div>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-value" id="statDef">4</div>
+                        <div class="stat-label">Défenseurs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="statMid">4</div>
+                        <div class="stat-label">Milieux</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="statAtt">2</div>
+                        <div class="stat-label">Attaquants</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Complete formations database matching user's system
+        const formations = {
+            // ============================================
+            // 3 DEFENDERS (9 formations)
+            // ============================================
+            "3-5-2": {
+                name: "Pistons",
+                category: "3 Défenseurs",
+                description: "Formation avec pistons (wingbacks) qui montent et descendent sur les côtés. Très efficace pour le pressing et les transitions.",
+                tags: ["balanced"],
+                stats: { def: 3, mid: 5, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },   // GK
+                    { top: 80, left: 25 },   // CB
+                    { top: 80, left: 50 },   // CB
+                    { top: 80, left: 75 },   // CB
+                    { top: 55, left: 10 },   // LWB
+                    { top: 60, left: 35 },   // CM
+                    { top: 60, left: 50 },   // CM
+                    { top: 60, left: 65 },   // CM
+                    { top: 55, left: 90 },   // RWB
+                    { top: 28, left: 35 },   // ST
+                    { top: 28, left: 65 },   // ST
+                ]
+            },
+            "3-4-3": {
+                name: "Total Football",
+                category: "3 Défenseurs",
+                description: "Formation très offensive inspirée du football total néerlandais. Trois attaquants pour une pression constante.",
+                tags: ["offensive"],
+                stats: { def: 3, mid: 4, att: 3 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 25 },
+                    { top: 80, left: 50 },
+                    { top: 80, left: 75 },
+                    { top: 55, left: 15 },   // LM
+                    { top: 58, left: 38 },   // CM
+                    { top: 58, left: 62 },   // CM
+                    { top: 55, left: 85 },   // RM
+                    { top: 28, left: 22 },   // LW
+                    { top: 25, left: 50 },   // ST
+                    { top: 28, left: 78 },   // RW
+                ]
+            },
+            "3-5-1-1": {
+                name: "Soutien Profond",
+                category: "3 Défenseurs",
+                description: "Un attaquant de soutien derrière l'avant-centre. Cinq milieux pour contrôler le jeu.",
+                tags: ["balanced"],
+                stats: { def: 3, mid: 5, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 25 },
+                    { top: 80, left: 50 },
+                    { top: 80, left: 75 },
+                    { top: 55, left: 10 },   // LWB
+                    { top: 60, left: 35 },   // CM
+                    { top: 60, left: 50 },   // CM
+                    { top: 60, left: 65 },   // CM
+                    { top: 55, left: 90 },   // RWB
+                    { top: 38, left: 50 },   // SS
+                    { top: 23, left: 50 },   // ST
+                ]
+            },
+            "3-4-2-1": {
+                name: "Shadow Strikers",
+                category: "3 Défenseurs",
+                description: "Deux attaquants de soutien derrière un avant-centre. Idéal pour les combinaisons.",
+                tags: ["offensive"],
+                stats: { def: 3, mid: 4, att: 3 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 25 },
+                    { top: 80, left: 50 },
+                    { top: 80, left: 75 },
+                    { top: 55, left: 12 },   // LWB
+                    { top: 60, left: 38 },   // CM
+                    { top: 60, left: 62 },   // CM
+                    { top: 55, left: 88 },   // RWB
+                    { top: 38, left: 32 },   // LAM
+                    { top: 38, left: 68 },   // RAM
+                    { top: 23, left: 50 },   // ST
+                ]
+            },
+            "3-4-1-2": {
+                name: "Trequartista",
+                category: "3 Défenseurs",
+                description: "Un meneur de jeu classique derrière deux attaquants. Création centrée sur le 10.",
+                tags: ["offensive"],
+                stats: { def: 3, mid: 4, att: 3 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 25 },
+                    { top: 80, left: 50 },
+                    { top: 80, left: 75 },
+                    { top: 55, left: 12 },   // LWB
+                    { top: 60, left: 38 },   // CM
+                    { top: 60, left: 62 },   // CM
+                    { top: 55, left: 88 },   // RWB
+                    { top: 40, left: 50 },   // CAM
+                    { top: 25, left: 35 },   // ST
+                    { top: 25, left: 65 },   // ST
+                ]
+            },
+            "3-1-4-2": {
+                name: "Regista",
+                category: "3 Défenseurs",
+                description: "Un playmaker profond (regista) devant la défense à trois. Contrôle du tempo.",
+                tags: ["balanced"],
+                stats: { def: 3, mid: 5, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 25 },
+                    { top: 80, left: 50 },
+                    { top: 80, left: 75 },
+                    { top: 68, left: 50 },   // Regista/CDM
+                    { top: 50, left: 15 },   // LM
+                    { top: 50, left: 38 },   // CM
+                    { top: 50, left: 62 },   // CM
+                    { top: 50, left: 85 },   // RM
+                    { top: 28, left: 35 },   // ST
+                    { top: 28, left: 65 },   // ST
+                ]
+            },
+            "3-4-3 (Diamond)": {
+                name: "Diamond Front",
+                category: "3 Défenseurs",
+                description: "3-4-3 avec un losange au milieu de terrain. Supériorité numérique au centre.",
+                tags: ["offensive"],
+                stats: { def: 3, mid: 4, att: 3 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 25 },
+                    { top: 80, left: 50 },
+                    { top: 80, left: 75 },
+                    { top: 65, left: 50 },   // CDM
+                    { top: 52, left: 25 },   // LCM
+                    { top: 52, left: 75 },   // RCM
+                    { top: 40, left: 50 },   // CAM
+                    { top: 25, left: 22 },   // LW
+                    { top: 22, left: 50 },   // ST
+                    { top: 25, left: 78 },   // RW
+                ]
+            },
+            "3-2-4-1": {
+                name: "Wide Midfield",
+                category: "3 Défenseurs",
+                description: "Deux pivots défensifs, quatre milieux offensifs très larges. Étirement maximal.",
+                tags: ["offensive"],
+                stats: { def: 3, mid: 6, att: 1 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 25 },
+                    { top: 80, left: 50 },
+                    { top: 80, left: 75 },
+                    { top: 65, left: 35 },   // CDM
+                    { top: 65, left: 65 },   // CDM
+                    { top: 45, left: 12 },   // LM
+                    { top: 45, left: 38 },   // LCM
+                    { top: 45, left: 62 },   // RCM
+                    { top: 45, left: 88 },   // RM
+                    { top: 25, left: 50 },   // ST
+                ]
+            },
+            "3-3-3-1": {
+                name: "Triple Trio",
+                category: "3 Défenseurs",
+                description: "Trois lignes de trois joueurs derrière un attaquant isolé. Équilibre parfait.",
+                tags: ["balanced"],
+                stats: { def: 3, mid: 6, att: 1 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 78, left: 25 },
+                    { top: 78, left: 50 },
+                    { top: 78, left: 75 },
+                    { top: 58, left: 25 },
+                    { top: 58, left: 50 },
+                    { top: 58, left: 75 },
+                    { top: 40, left: 25 },
+                    { top: 40, left: 50 },
+                    { top: 40, left: 75 },
+                    { top: 23, left: 50 },
+                ]
+            },
+
+            // ============================================
+            // 4 DEFENDERS (12 formations)
+            // ============================================
+            "4-4-2": {
+                name: "Classique",
+                category: "4 Défenseurs",
+                description: "Formation équilibrée et polyvalente, idéale pour une approche classique du jeu avec deux attaquants.",
+                tags: ["balanced"],
+                stats: { def: 4, mid: 4, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 58, left: 15 },
+                    { top: 58, left: 38 },
+                    { top: 58, left: 62 },
+                    { top: 58, left: 85 },
+                    { top: 28, left: 35 },
+                    { top: 28, left: 65 },
+                ]
+            },
+            "4-1-2-1-2 (Diamond)": {
+                name: "Losange",
+                category: "4 Défenseurs",
+                description: "Milieu en losange avec un pivot bas et un meneur haut. Contrôle du centre du terrain.",
+                tags: ["offensive"],
+                stats: { def: 4, mid: 4, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 68, left: 50 },   // CDM
+                    { top: 52, left: 30 },   // LCM
+                    { top: 52, left: 70 },   // RCM
+                    { top: 38, left: 50 },   // CAM
+                    { top: 25, left: 35 },   // ST
+                    { top: 25, left: 65 },   // ST
+                ]
+            },
+            "4-3-3": {
+                name: "Offensif",
+                category: "4 Défenseurs",
+                description: "Formation offensive privilégiant les attaques sur les ailes avec trois attaquants.",
+                tags: ["offensive"],
+                stats: { def: 4, mid: 3, att: 3 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 58, left: 30 },
+                    { top: 58, left: 50 },
+                    { top: 58, left: 70 },
+                    { top: 28, left: 20 },
+                    { top: 25, left: 50 },
+                    { top: 28, left: 80 },
+                ]
+            },
+            "4-5-1": {
+                name: "Compact",
+                category: "4 Défenseurs",
+                description: "Formation très défensive avec cinq milieux et un attaquant isolé. Solidité garantie.",
+                tags: ["defensive"],
+                stats: { def: 4, mid: 5, att: 1 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 58, left: 15 },
+                    { top: 58, left: 35 },
+                    { top: 58, left: 50 },
+                    { top: 58, left: 65 },
+                    { top: 58, left: 85 },
+                    { top: 28, left: 50 },
+                ]
+            },
+            "4-4-1-1": {
+                name: "Soutien",
+                category: "4 Défenseurs",
+                description: "Un attaquant avec un soutien en retrait, milieu à plat. Bon équilibre offensif/défensif.",
+                tags: ["balanced"],
+                stats: { def: 4, mid: 4, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 58, left: 15 },
+                    { top: 58, left: 38 },
+                    { top: 58, left: 62 },
+                    { top: 58, left: 85 },
+                    { top: 38, left: 50 },
+                    { top: 23, left: 50 },
+                ]
+            },
+            "4-1-4-1": {
+                name: "Sentinelle",
+                category: "4 Défenseurs",
+                description: "Un seul milieu défensif devant la défense, quatre milieux en ligne. Protection optimale.",
+                tags: ["defensive"],
+                stats: { def: 4, mid: 5, att: 1 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 68, left: 50 },
+                    { top: 50, left: 15 },
+                    { top: 50, left: 38 },
+                    { top: 50, left: 62 },
+                    { top: 50, left: 85 },
+                    { top: 25, left: 50 },
+                ]
+            },
+            "4-2-3-1": {
+                name: "Moderne",
+                category: "4 Défenseurs",
+                description: "Formation moderne très populaire avec deux pivots défensifs et un meneur de jeu.",
+                tags: ["balanced"],
+                stats: { def: 4, mid: 5, att: 1 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 62, left: 35 },
+                    { top: 62, left: 65 },
+                    { top: 45, left: 20 },
+                    { top: 42, left: 50 },
+                    { top: 45, left: 80 },
+                    { top: 25, left: 50 },
+                ]
+            },
+            "4-3-2-1": {
+                name: "Arbre de Noël",
+                category: "4 Défenseurs",
+                description: "Formation en forme de sapin, dense au milieu avec un seul attaquant de pointe.",
+                tags: ["balanced"],
+                stats: { def: 4, mid: 5, att: 1 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 62, left: 30 },
+                    { top: 62, left: 50 },
+                    { top: 62, left: 70 },
+                    { top: 42, left: 35 },
+                    { top: 42, left: 65 },
+                    { top: 25, left: 50 },
+                ]
+            },
+            "4-2-2-2": {
+                name: "Box Midfield",
+                category: "4 Défenseurs",
+                description: "Milieu en carré avec deux pivots et deux meneurs, deux attaquants. Très équilibré.",
+                tags: ["offensive"],
+                stats: { def: 4, mid: 4, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 62, left: 35 },
+                    { top: 62, left: 65 },
+                    { top: 45, left: 35 },
+                    { top: 45, left: 65 },
+                    { top: 26, left: 35 },
+                    { top: 26, left: 65 },
+                ]
+            },
+            "4-1-3-2": {
+                name: "Support Offensif",
+                category: "4 Défenseurs",
+                description: "Un pivot défensif, trois milieux offensifs et deux attaquants. Très offensif.",
+                tags: ["offensive"],
+                stats: { def: 4, mid: 4, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 65, left: 50 },
+                    { top: 48, left: 25 },
+                    { top: 48, left: 50 },
+                    { top: 48, left: 75 },
+                    { top: 26, left: 35 },
+                    { top: 26, left: 65 },
+                ]
+            },
+            "4-2-4-0": {
+                name: "Sans Attaquant",
+                category: "4 Défenseurs",
+                description: "Formation sans attaquant de pointe, utilisée par l'Espagne à l'Euro 2012. Faux 9.",
+                tags: ["offensive"],
+                stats: { def: 4, mid: 6, att: 0 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 60, left: 35 },
+                    { top: 60, left: 65 },
+                    { top: 38, left: 15 },
+                    { top: 38, left: 38 },
+                    { top: 38, left: 62 },
+                    { top: 38, left: 85 },
+                ]
+            },
+            "4-3-1-2": {
+                name: "Narrow",
+                category: "4 Défenseurs",
+                description: "Trois milieux avec un meneur et deux attaquants rapprochés. Jeu central.",
+                tags: ["offensive"],
+                stats: { def: 4, mid: 4, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 60, left: 28 },
+                    { top: 60, left: 50 },
+                    { top: 60, left: 72 },
+                    { top: 42, left: 50 },
+                    { top: 26, left: 35 },
+                    { top: 26, left: 65 },
+                ]
+            },
+            "4-1-3-2": {
+                name: "Attacking Mid",
+                category: "4 Défenseurs",
+                description: "Un pivot, trois milieux offensifs, deux attaquants. Variante offensive.",
+                tags: ["offensive"],
+                stats: { def: 4, mid: 4, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 15 },
+                    { top: 80, left: 38 },
+                    { top: 80, left: 62 },
+                    { top: 80, left: 85 },
+                    { top: 65, left: 50 },
+                    { top: 48, left: 25 },
+                    { top: 48, left: 50 },
+                    { top: 48, left: 75 },
+                    { top: 26, left: 35 },
+                    { top: 26, left: 65 },
+                ]
+            },
+
+            // ============================================
+            // 5 DEFENDERS (2 formations)
+            // ============================================
+            "5-3-2": {
+                name: "Défense Haute",
+                category: "5 Défenseurs",
+                description: "Cinq défenseurs avec trois milieux centraux et deux attaquants. Base très solide.",
+                tags: ["defensive"],
+                stats: { def: 5, mid: 3, att: 2 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 10 },
+                    { top: 80, left: 30 },
+                    { top: 80, left: 50 },
+                    { top: 80, left: 70 },
+                    { top: 80, left: 90 },
+                    { top: 55, left: 30 },
+                    { top: 55, left: 50 },
+                    { top: 55, left: 70 },
+                    { top: 28, left: 35 },
+                    { top: 28, left: 65 },
+                ]
+            },
+            "5-4-1": {
+                name: "Bunker",
+                category: "5 Défenseurs",
+                description: "Formation ultra défensive avec cinq défenseurs et un seul attaquant. Mur imprenable.",
+                tags: ["defensive"],
+                stats: { def: 5, mid: 4, att: 1 },
+                positions: [
+                    { top: 93, left: 50 },
+                    { top: 80, left: 10 },
+                    { top: 80, left: 30 },
+                    { top: 80, left: 50 },
+                    { top: 80, left: 70 },
+                    { top: 80, left: 90 },
+                    { top: 55, left: 18 },
+                    { top: 55, left: 40 },
+                    { top: 55, left: 60 },
+                    { top: 55, left: 82 },
+                    { top: 28, left: 50 },
+                ]
+            }
+        };
+
+        // Get categories with count
+        function getCategories() {
+            const categories = {};
+            Object.entries(formations).forEach(([key, value]) => {
+                if (!categories[value.category]) {
+                    categories[value.category] = [];
+                }
+                categories[value.category].push(key);
+            });
+            return categories;
+        }
+
+        // Render formations list
+        function renderFormations(filter = '') {
+            const container = document.getElementById('formationsContainer');
+            const categories = getCategories();
+            container.innerHTML = '';
+
+            // Order categories
+            const categoryOrder = ['3 Défenseurs', '4 Défenseurs', '5 Défenseurs'];
+
+            categoryOrder.forEach(category => {
+                const formationKeys = categories[category] || [];
+                const filteredKeys = formationKeys.filter(key =>
+                    key.toLowerCase().includes(filter.toLowerCase()) ||
+                    formations[key].name.toLowerCase().includes(filter.toLowerCase())
+                );
+
+                if (filteredKeys.length === 0) return;
+
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+
+                categoryDiv.innerHTML = `
+                    <div class="category-title">
+                        ${category}
+                        <span class="category-count">${filteredKeys.length}</span>
+                    </div>
+                    <div class="formation-grid">
+                        ${filteredKeys.map(key => `
+                            <button class="formation-btn" data-formation="${key}">
+                                ${key.replace(' (Diamond)', '')}
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+
+                container.appendChild(categoryDiv);
+            });
+
+            // Add click handlers
+            document.querySelectorAll('.formation-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setFormation(btn.dataset.formation);
+                });
+            });
+        }
+
+        // Set formation
+        function setFormation(formationKey) {
+            const formation = formations[formationKey];
+            if (!formation) return;
+
+            // Update UI
+            document.getElementById('currentFormation').textContent = formationKey;
+            document.getElementById('formationName').textContent = formation.name;
+            document.getElementById('formationInfo').textContent = formation.description;
+
+            // Update stats
+            document.getElementById('statDef').textContent = formation.stats.def;
+            document.getElementById('statMid').textContent = formation.stats.mid;
+            document.getElementById('statAtt').textContent = formation.stats.att;
+
+            // Update tags
+            const tagsContainer = document.getElementById('formationTags');
+            const tagLabels = {
+                offensive: 'Offensif',
+                defensive: 'Défensif',
+                balanced: 'Équilibré'
+            };
+            tagsContainer.innerHTML = formation.tags.map(tag =>
+                `<span class="info-tag ${tag}">${tagLabels[tag]}</span>`
+            ).join('');
+
+            // Update active button
+            document.querySelectorAll('.formation-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.formation === formationKey);
+            });
+
+            // Move players with animation
+            formation.positions.forEach((pos, index) => {
+                const player = document.getElementById(`player${index + 1}`);
+                if (player) {
+                    player.style.top = `${pos.top}%`;
+                    player.style.left = `${pos.left}%`;
+                    player.style.transform = 'translate(-50%, -50%)';
+                }
+            });
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            renderFormations(e.target.value);
+        });
+
+        // Initialize
+        renderFormations();
+        setFormation('4-4-2');
+    </script>
+</body>
+</html>
