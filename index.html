@@ -30,6 +30,175 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Mobile optimization for iPhone SE and small devices */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+            .container {
+                gap: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .subtitle {
+                font-size: 12px;
+                margin-top: 6px;
+            }
+            .total-count {
+                font-size: 10px;
+                padding: 3px 10px;
+                margin-top: 8px;
+            }
+            .current-formation {
+                font-size: 36px;
+                margin-bottom: 8px;
+            }
+            .formation-name {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+            .formation-example {
+                font-size: 10px;
+                margin-bottom: 12px;
+                max-width: 280px;
+            }
+            .pitch-container {
+                max-width: 280px;
+            }
+            .player {
+                width: 28px;
+                height: 28px;
+                font-size: 10px;
+            }
+            .sidebar {
+                padding: 14px;
+            }
+            .sidebar-title {
+                font-size: 11px;
+                margin-bottom: 12px;
+            }
+            .search-input {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+            .category-title {
+                font-size: 10px;
+                margin-bottom: 8px;
+            }
+            .category-count {
+                font-size: 9px;
+                padding: 2px 6px;
+            }
+            .formation-btn {
+                font-size: 11px;
+                padding: 8px 4px;
+            }
+            .info-panel {
+                padding: 12px;
+                margin-top: 12px;
+            }
+            .info-title {
+                font-size: 10px;
+                margin-bottom: 8px;
+            }
+            .info-content {
+                font-size: 11px;
+            }
+            .info-tag {
+                font-size: 9px;
+                padding: 3px 8px;
+            }
+            .stat-value {
+                font-size: 16px;
+            }
+            .stat-label {
+                font-size: 8px;
+            }
+            .stat-item {
+                padding: 6px;
+            }
+            .sources-section {
+                padding: 16px;
+                margin-top: 20px;
+            }
+            .sources-icon {
+                font-size: 20px;
+            }
+            .sources-title {
+                font-size: 14px;
+            }
+            .sources-subtitle {
+                font-size: 10px;
+            }
+            .sources-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .source-card {
+                padding: 12px;
+            }
+            .source-name {
+                font-size: 12px;
+            }
+            .source-desc {
+                font-size: 10px;
+            }
+            .source-link {
+                font-size: 9px;
+            }
+            .source-formation-tag {
+                font-size: 8px;
+                padding: 2px 5px;
+            }
+        }
+
+        /* Extra small devices (iPhone SE 320px) */
+        @media (max-width: 360px) {
+            body {
+                padding: 8px;
+            }
+            .container {
+                gap: 16px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .subtitle {
+                font-size: 11px;
+            }
+            .current-formation {
+                font-size: 32px;
+            }
+            .pitch-container {
+                max-width: 260px;
+            }
+            .player {
+                width: 26px;
+                height: 26px;
+                font-size: 9px;
+            }
+            .sidebar {
+                padding: 12px;
+            }
+            .formation-btn {
+                font-size: 10px;
+                padding: 7px 3px;
+            }
+            .formation-grid {
+                gap: 5px;
+            }
+            .info-panel {
+                padding: 10px;
+            }
+            .sources-section {
+                padding: 12px;
+            }
+            .source-card {
+                padding: 10px;
+            }
+        }
         .header {
             grid-column: 1 / -1;
             text-align: center;
