@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Formations Pro - Complet</title>
+    <title>Football Formations Pro</title>
     <style>
         * {
             margin: 0;
@@ -11,295 +11,120 @@
             box-sizing: border-box;
         }
         body {
-            background: #0f0f1a;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            padding: 20px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 16px;
             color: #fff;
         }
         .container {
-            max-width: 1200px;
+            max-width: 420px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 32px;
-            align-items: start;
-        }
-        @media (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Mobile optimization for iPhone SE and small devices */
-        @media (max-width: 480px) {
-            body {
-                padding: 12px;
-            }
-            .container {
-                gap: 20px;
-            }
-            h1 {
-                font-size: 24px;
-            }
-            .subtitle {
-                font-size: 12px;
-                margin-top: 6px;
-            }
-            .total-count {
-                font-size: 10px;
-                padding: 3px 10px;
-                margin-top: 8px;
-            }
-            .current-formation {
-                font-size: 36px;
-                margin-bottom: 8px;
-            }
-            .formation-name {
-                font-size: 11px;
-                margin-bottom: 6px;
-            }
-            .formation-example {
-                font-size: 10px;
-                margin-bottom: 12px;
-                max-width: 280px;
-            }
-            .pitch-container {
-                max-width: 280px;
-            }
-            .player {
-                width: 28px;
-                height: 28px;
-                font-size: 10px;
-            }
-            .sidebar {
-                padding: 14px;
-            }
-            .sidebar-title {
-                font-size: 11px;
-                margin-bottom: 12px;
-            }
-            .search-input {
-                padding: 10px 12px;
-                font-size: 13px;
-            }
-            .category-title {
-                font-size: 10px;
-                margin-bottom: 8px;
-            }
-            .category-count {
-                font-size: 9px;
-                padding: 2px 6px;
-            }
-            .formation-btn {
-                font-size: 11px;
-                padding: 8px 4px;
-            }
-            .info-panel {
-                padding: 12px;
-                margin-top: 12px;
-            }
-            .info-title {
-                font-size: 10px;
-                margin-bottom: 8px;
-            }
-            .info-content {
-                font-size: 11px;
-            }
-            .info-tag {
-                font-size: 9px;
-                padding: 3px 8px;
-            }
-            .stat-value {
-                font-size: 16px;
-            }
-            .stat-label {
-                font-size: 8px;
-            }
-            .stat-item {
-                padding: 6px;
-            }
-            .sources-section {
-                padding: 16px;
-                margin-top: 20px;
-            }
-            .sources-icon {
-                font-size: 20px;
-            }
-            .sources-title {
-                font-size: 14px;
-            }
-            .sources-subtitle {
-                font-size: 10px;
-            }
-            .sources-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            .source-card {
-                padding: 12px;
-            }
-            .source-name {
-                font-size: 12px;
-            }
-            .source-desc {
-                font-size: 10px;
-            }
-            .source-link {
-                font-size: 9px;
-            }
-            .source-formation-tag {
-                font-size: 8px;
-                padding: 2px 5px;
-            }
-        }
-
-        /* Extra small devices (iPhone SE 320px) */
-        @media (max-width: 360px) {
-            body {
-                padding: 8px;
-            }
-            .container {
-                gap: 16px;
-            }
-            h1 {
-                font-size: 20px;
-            }
-            .subtitle {
-                font-size: 11px;
-            }
-            .current-formation {
-                font-size: 32px;
-            }
-            .pitch-container {
-                max-width: 260px;
-            }
-            .player {
-                width: 26px;
-                height: 26px;
-                font-size: 9px;
-            }
-            .sidebar {
-                padding: 12px;
-            }
-            .formation-btn {
-                font-size: 10px;
-                padding: 7px 3px;
-            }
-            .formation-grid {
-                gap: 5px;
-            }
-            .info-panel {
-                padding: 10px;
-            }
-            .sources-section {
-                padding: 12px;
-            }
-            .source-card {
-                padding: 10px;
-            }
         }
         .header {
-            grid-column: 1 / -1;
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 20px;
         }
         h1 {
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #fff;
+            margin-bottom: 8px;
         }
         .subtitle {
-            color: rgba(255,255,255,0.5);
-            margin-top: 8px;
-            font-size: 14px;
-        }
-        .total-count {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 4px 12px;
-            border-radius: 20px;
             font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Formation Selector */
+        .formation-selector {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .selector-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8px;
+        }
+        .formation-dropdown {
+            width: 100%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 12px 16px;
             color: #fff;
-            margin-top: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
         }
-        /* Pitch Section */
-        .pitch-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .current-formation {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .formation-dropdown option {
+            background: #1a1a2e;
+            color: #fff;
         }
         .formation-name {
             color: rgba(255,255,255,0.6);
-            font-size: 14px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .formation-example {
-            color: rgba(255,255,255,0.4);
             font-size: 12px;
-            margin-bottom: 20px;
-            font-style: italic;
+            margin-top: 8px;
             text-align: center;
-            max-width: 350px;
         }
+
+        /* Pitch */
         .pitch-container {
             position: relative;
             width: 100%;
-            max-width: 400px;
+            margin-bottom: 20px;
         }
         .pitch {
             width: 100%;
             aspect-ratio: 68/105;
-            background: linear-gradient(to bottom,
-                #2d8a3e 0%, #2d8a3e 8.33%,
-                #349447 8.33%, #349447 16.66%,
-                #2d8a3e 16.66%, #2d8a3e 25%,
-                #349447 25%, #349447 33.33%,
-                #2d8a3e 33.33%, #2d8a3e 41.66%,
-                #349447 41.66%, #349447 50%,
-                #2d8a3e 50%, #2d8a3e 58.33%,
-                #349447 58.33%, #349447 66.66%,
-                #2d8a3e 66.66%, #2d8a3e 75%,
-                #349447 75%, #349447 83.33%,
-                #2d8a3e 83.33%, #2d8a3e 91.66%,
-                #349447 91.66%, #349447 100%
+            background: linear-gradient(180deg,
+                #c31432 0%,
+                #d62839 20%,
+                #e63946 40%,
+                #d62839 60%,
+                #c31432 80%,
+                #b01228 100%
             );
-            border-radius: 12px;
+            border-radius: 16px;
             position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px -10px rgba(195, 20, 50, 0.4);
             overflow: hidden;
         }
         .pitch::before {
             content: '';
             position: absolute;
             inset: 0;
-            border: 3px solid rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
+            background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(0,0,0,0.2) 100%);
             pointer-events: none;
         }
+        .pitch::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            pointer-events: none;
+        }
+
         /* Pitch markings */
         .center-line {
             position: absolute;
             top: 50%;
             left: 0;
             right: 0;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.85);
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-50%);
         }
         .center-circle {
@@ -308,17 +133,7 @@
             left: 50%;
             width: 22%;
             aspect-ratio: 1;
-            border: 3px solid rgba(255, 255, 255, 0.85);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .center-dot {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.85);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             transform: translate(-50%, -50%);
         }
@@ -329,29 +144,8 @@
             transform: translateX(-50%);
             width: 55%;
             height: 16%;
-            border: 3px solid rgba(255, 255, 255, 0.85);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-top: none;
-        }
-        .goal-area-top {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 25%;
-            height: 6%;
-            border: 3px solid rgba(255, 255, 255, 0.85);
-            border-top: none;
-        }
-        .penalty-arc-top {
-            position: absolute;
-            top: 13%;
-            left: 50%;
-            width: 18%;
-            height: 9%;
-            border: 3px solid rgba(255, 255, 255, 0.85);
-            border-top: none;
-            border-radius: 0 0 50% 50%;
-            transform: translateX(-50%);
         }
         .penalty-area-bottom {
             position: absolute;
@@ -360,494 +154,391 @@
             transform: translateX(-50%);
             width: 55%;
             height: 16%;
-            border: 3px solid rgba(255, 255, 255, 0.85);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-bottom: none;
         }
-        .goal-area-bottom {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 25%;
-            height: 6%;
-            border: 3px solid rgba(255, 255, 255, 0.85);
-            border-bottom: none;
-        }
-        .penalty-arc-bottom {
-            position: absolute;
-            bottom: 13%;
-            left: 50%;
-            width: 18%;
-            height: 9%;
-            border: 3px solid rgba(255, 255, 255, 0.85);
-            border-bottom: none;
-            border-radius: 50% 50% 0 0;
-            transform: translateX(-50%);
-        }
-        .corner-tl, .corner-tr, .corner-bl, .corner-br {
-            position: absolute;
-            width: 3%;
-            aspect-ratio: 1;
-            border: 3px solid rgba(255, 255, 255, 0.85);
-        }
-        .corner-tl { top: -3px; left: -3px; border-radius: 0 0 100% 0; border-top: none; border-left: none; }
-        .corner-tr { top: -3px; right: -3px; border-radius: 0 0 0 100%; border-top: none; border-right: none; }
-        .corner-bl { bottom: -3px; left: -3px; border-radius: 0 100% 0 0; border-bottom: none; border-left: none; }
-        .corner-br { bottom: -3px; right: -3px; border-radius: 100% 0 0 0; border-bottom: none; border-right: none; }
+
         /* Players */
         .player {
             position: absolute;
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            z-index: 10;
+        }
+        .player:active {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .player-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-weight: 700;
-            font-size: 12px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            z-index: 10;
+            font-size: 14px;
+            color: #c31432;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255,255,255,0.9);
+            position: relative;
         }
-        .player:hover {
-            transform: scale(1.15);
-            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.7);
-            z-index: 20;
+        .player.goalkeeper .player-avatar {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a1a2e;
         }
-        .player.goalkeeper {
-            background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
-            box-shadow: 0 4px 15px rgba(245, 175, 25, 0.5);
+        .player-name {
+            font-size: 9px;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            white-space: nowrap;
+            background: rgba(0,0,0,0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            backdrop-filter: blur(4px);
         }
-        .player.goalkeeper:hover {
-            box-shadow: 0 6px 25px rgba(245, 175, 25, 0.7);
+        .player-badge {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 16px;
+            height: 16px;
+            background: #1a1a2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            border: 2px solid #fff;
         }
-        /* Sidebar */
-        .sidebar {
-            background: rgba(255,255,255,0.03);
-            border-radius: 16px;
-            padding: 20px;
-            border: 1px solid rgba(255,255,255,0.08);
-            max-height: calc(100vh - 140px);
-            overflow-y: auto;
-        }
-        .sidebar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .sidebar::-webkit-scrollbar-track {
+
+        /* Substitutes */
+        .substitutes-section {
             background: rgba(255,255,255,0.05);
-            border-radius: 3px;
-        }
-        .sidebar::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.2);
-            border-radius: 3px;
-        }
-        .sidebar-title {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.4);
-            margin-bottom: 16px;
-        }
-        .category {
+            border-radius: 12px;
+            padding: 16px;
             margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .category-title {
+        .substitutes-title {
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: rgba(255,255,255,0.3);
-            margin-bottom: 10px;
-            padding-left: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 12px;
         }
-        .category-count {
-            background: rgba(255,255,255,0.1);
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 10px;
-        }
-        .formation-grid {
+        .substitutes-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .substitute {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 6px;
         }
-        .formation-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 10px 6px;
-            color: #fff;
-            font-size: 13px;
+        .substitute-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+            color: #c31432;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        .substitute-name {
+            font-size: 8px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            color: rgba(255,255,255,0.7);
             text-align: center;
         }
-        .formation-btn:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-        .formation-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-color: transparent;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        /* Search */
-        .search-container {
-            margin-bottom: 16px;
-        }
-        .search-input {
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 12px 16px;
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-        .search-input::placeholder {
-            color: rgba(255,255,255,0.3);
-        }
-        .search-input:focus {
-            border-color: rgba(102, 126, 234, 0.5);
-            background: rgba(255,255,255,0.08);
-        }
-        /* Info panel */
+
+        /* Info Panel */
         .info-panel {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255,255,255,0.05);
             border-radius: 12px;
-            padding: 14px;
-            margin-top: 16px;
-            border: 1px solid rgba(255,255,255,0.06);
+            padding: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .info-title {
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: rgba(255,255,255,0.4);
-            margin-bottom: 10px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8px;
         }
         .info-content {
             font-size: 12px;
             color: rgba(255,255,255,0.7);
             line-height: 1.6;
+            margin-bottom: 12px;
         }
-        .info-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 10px;
+        .info-example {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            font-style: italic;
+            margin-bottom: 12px;
         }
-        .info-tag {
-            background: rgba(255,255,255,0.08);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 10px;
-            color: rgba(255,255,255,0.6);
-        }
-        .info-tag.offensive {
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
-        }
-        .info-tag.defensive {
-            background: rgba(245, 87, 108, 0.2);
-            color: #f5576c;
-        }
-        .info-tag.balanced {
-            background: rgba(245, 175, 25, 0.2);
-            color: #f5af19;
-        }
-        /* Stats */
         .stats-row {
             display: flex;
-            gap: 10px;
-            margin-top: 14px;
+            gap: 8px;
         }
         .stat-item {
             flex: 1;
-            background: rgba(255,255,255,0.03);
+            background: rgba(255,255,255,0.05);
             border-radius: 8px;
-            padding: 8px;
+            padding: 10px;
             text-align: center;
+            border: 1px solid rgba(255,255,255,0.08);
         }
         .stat-value {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: #fff;
+            margin-bottom: 2px;
         }
         .stat-label {
             font-size: 9px;
             color: rgba(255,255,255,0.4);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-top: 2px;
         }
-        /* Sources */
-        .sources-section {
-            grid-column: 1 / -1;
-            margin-top: 32px;
-            padding: 24px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .sources-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-        .sources-icon {
-            font-size: 24px;
-        }
-        .sources-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.8);
-        }
-        .sources-subtitle {
-            font-size: 12px;
-            color: rgba(255,255,255,0.4);
-        }
-        .sources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 12px;
-        }
-        .source-card {
-            background: rgba(255,255,255,0.03);
-            border-radius: 10px;
-            padding: 14px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.2s ease;
-        }
-        .source-card:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(255,255,255,0.1);
-        }
-        .source-name {
-            font-size: 13px;
-            font-weight: 600;
-            color: #667eea;
-            margin-bottom: 4px;
-        }
-        .source-desc {
-            font-size: 11px;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 8px;
-        }
-        .source-link {
-            font-size: 10px;
-            color: rgba(255,255,255,0.3);
-            text-decoration: none;
-            word-break: break-all;
-        }
-        .source-link:hover {
-            color: #667eea;
-        }
-        .source-formations {
-            margin-top: 8px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-        .source-formation-tag {
-            background: rgba(102, 126, 234, 0.15);
-            color: rgba(255,255,255,0.6);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 9px;
+
+        /* Mobile optimizations */
+        @media (max-width: 360px) {
+            body {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .player-avatar {
+                width: 42px;
+                height: 42px;
+                font-size: 12px;
+            }
+            .player-name {
+                font-size: 8px;
+                padding: 1px 4px;
+            }
+            .substitute-avatar {
+                width: 36px;
+                height: 36px;
+                font-size: 11px;
+            }
+            .substitutes-grid {
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>⚽ Football Formations Pro</h1>
-            <p class="subtitle">Toutes les formations tactiques du football professionnel moderne</p>
-            <span class="total-count" id="totalCount">30 formations</span>
+            <h1>⚽ Football Formations</h1>
+            <p class="subtitle">30 formations professionnelles</p>
         </div>
 
-        <div class="pitch-section">
-            <div class="current-formation" id="currentFormation">4-4-2</div>
-            <div class="formation-name" id="formationName">Classique</div>
-            <div class="formation-example" id="formationExample">Ex: Manchester United (Ferguson)</div>
+        <!-- Formation Selector -->
+        <div class="formation-selector">
+            <div class="selector-label">Sélectionner une formation</div>
+            <select class="formation-dropdown" id="formationSelect">
+                <optgroup label="3 Défenseurs">
+                    <option value="3-5-2">3-5-2 - Wingbacks</option>
+                    <option value="3-4-3">3-4-3 - Total Football</option>
+                    <option value="3-4-3d">3-4-3 Diamond</option>
+                    <option value="3-5-1-1">3-5-1-1 - Soutien Profond</option>
+                    <option value="3-4-2-1">3-4-2-1 - Shadow Strikers</option>
+                    <option value="3-4-1-2">3-4-1-2 - Trequartista</option>
+                    <option value="3-1-4-2">3-1-4-2 - Regista</option>
+                    <option value="3-2-4-1">3-2-4-1 - Double Pivot</option>
+                    <option value="3-3-3-1">3-3-3-1 - Triple Trio</option>
+                    <option value="3-6-1">3-6-1 - Ultra Défensif</option>
+                    <option value="3-3-2-2">3-3-2-2 - Pressing Intense</option>
+                </optgroup>
+                <optgroup label="4 Défenseurs">
+                    <option value="4-4-2" selected>4-4-2 - Classique</option>
+                    <option value="4-1-2-1-2">4-1-2-1-2 - Losange / Diamond</option>
+                    <option value="4-3-3">4-3-3 - Offensif</option>
+                    <option value="4-5-1">4-5-1 - Compact</option>
+                    <option value="4-4-1-1">4-4-1-1 - Soutien</option>
+                    <option value="4-1-4-1">4-1-4-1 - Sentinelle</option>
+                    <option value="4-2-3-1">4-2-3-1 - Moderne</option>
+                    <option value="4-3-2-1">4-3-2-1 - Arbre de Noël</option>
+                    <option value="4-2-2-2">4-2-2-2 - Box Midfield</option>
+                    <option value="4-1-3-2">4-1-3-2 - Support Offensif</option>
+                    <option value="4-2-4">4-2-4 - Ultra Offensif</option>
+                    <option value="4-3-1-2">4-3-1-2 - Étroit</option>
+                    <option value="4-6-0">4-6-0 - Sans Attaquant (False 9)</option>
+                </optgroup>
+                <optgroup label="5 Défenseurs">
+                    <option value="5-3-2">5-3-2 - Défensif Moderne</option>
+                    <option value="5-4-1">5-4-1 - Bunker / Catenaccio</option>
+                    <option value="5-2-1-2">5-2-1-2 - Verrou</option>
+                    <option value="5-2-3">5-2-3 - Contre-Attaque</option>
+                    <option value="5-1-2-2">5-1-2-2 - Libero</option>
+                    <option value="5-2-2-1">5-2-2-1 - Catenaccio Moderne</option>
+                </optgroup>
+            </select>
+            <div class="formation-name" id="formationName">Formation équilibrée et polyvalente</div>
+        </div>
 
-            <div class="pitch-container">
-                <div class="pitch">
-                    <div class="center-line"></div>
-                    <div class="center-circle"></div>
-                    <div class="center-dot"></div>
-                    <div class="penalty-area-top"></div>
-                    <div class="goal-area-top"></div>
-                    <div class="penalty-arc-top"></div>
-                    <div class="penalty-area-bottom"></div>
-                    <div class="goal-area-bottom"></div>
-                    <div class="penalty-arc-bottom"></div>
-                    <div class="corner-tl"></div>
-                    <div class="corner-tr"></div>
-                    <div class="corner-bl"></div>
-                    <div class="corner-br"></div>
+        <!-- Pitch -->
+        <div class="pitch-container">
+            <div class="pitch">
+                <div class="center-line"></div>
+                <div class="center-circle"></div>
+                <div class="penalty-area-top"></div>
+                <div class="penalty-area-bottom"></div>
 
-                    <!-- Players -->
-                    <div class="player goalkeeper" id="player1">GK</div>
-                    <div class="player" id="player2">2</div>
-                    <div class="player" id="player3">3</div>
-                    <div class="player" id="player4">4</div>
-                    <div class="player" id="player5">5</div>
-                    <div class="player" id="player6">6</div>
-                    <div class="player" id="player7">7</div>
-                    <div class="player" id="player8">8</div>
-                    <div class="player" id="player9">9</div>
-                    <div class="player" id="player10">10</div>
-                    <div class="player" id="player11">11</div>
+                <!-- Players (11 players) -->
+                <div class="player goalkeeper" id="player1">
+                    <div class="player-avatar">
+                        GK
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Gardien</div>
+                </div>
+                <div class="player" id="player2">
+                    <div class="player-avatar">
+                        DF
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Défenseur</div>
+                </div>
+                <div class="player" id="player3">
+                    <div class="player-avatar">
+                        DF
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Défenseur</div>
+                </div>
+                <div class="player" id="player4">
+                    <div class="player-avatar">
+                        DF
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Défenseur</div>
+                </div>
+                <div class="player" id="player5">
+                    <div class="player-avatar">
+                        DF
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Défenseur</div>
+                </div>
+                <div class="player" id="player6">
+                    <div class="player-avatar">
+                        MI
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Milieu</div>
+                </div>
+                <div class="player" id="player7">
+                    <div class="player-avatar">
+                        MI
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Milieu</div>
+                </div>
+                <div class="player" id="player8">
+                    <div class="player-avatar">
+                        MI
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Milieu</div>
+                </div>
+                <div class="player" id="player9">
+                    <div class="player-avatar">
+                        MI
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Milieu</div>
+                </div>
+                <div class="player" id="player10">
+                    <div class="player-avatar">
+                        AT
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Attaquant</div>
+                </div>
+                <div class="player" id="player11">
+                    <div class="player-avatar">
+                        AT
+                        <div class="player-badge">⭐</div>
+                    </div>
+                    <div class="player-name">Attaquant</div>
                 </div>
             </div>
         </div>
 
-        <div class="sidebar">
-            <div class="search-container">
-                <input type="text" class="search-input" id="searchInput" placeholder="🔍 Rechercher une formation...">
-            </div>
-
-            <div class="sidebar-title">Formations Tactiques</div>
-
-            <div id="formationsContainer"></div>
-
-            <div class="info-panel">
-                <div class="info-title">📋 Détails</div>
-                <div class="info-content" id="formationInfo">
-                    Formation équilibrée et polyvalente.
+        <!-- Substitutes -->
+        <div class="substitutes-section">
+            <div class="substitutes-title">Remplaçants</div>
+            <div class="substitutes-grid">
+                <div class="substitute">
+                    <div class="substitute-avatar">GK</div>
+                    <div class="substitute-name">Gardien</div>
                 </div>
-                <div class="info-tags" id="formationTags">
-                    <span class="info-tag balanced">Équilibré</span>
+                <div class="substitute">
+                    <div class="substitute-avatar">DF</div>
+                    <div class="substitute-name">Défenseur</div>
                 </div>
-                <div class="stats-row">
-                    <div class="stat-item">
-                        <div class="stat-value" id="statDef">4</div>
-                        <div class="stat-label">Déf</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="statMid">4</div>
-                        <div class="stat-label">Mil</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="statAtt">2</div>
-                        <div class="stat-label">Att</div>
-                    </div>
+                <div class="substitute">
+                    <div class="substitute-avatar">MI</div>
+                    <div class="substitute-name">Milieu</div>
+                </div>
+                <div class="substitute">
+                    <div class="substitute-avatar">AT</div>
+                    <div class="substitute-name">Attaquant</div>
                 </div>
             </div>
         </div>
 
-        <!-- Sources Section -->
-        <div class="sources-section">
-            <div class="sources-header">
-                <span class="sources-icon">📚</span>
-                <div>
-                    <div class="sources-title">Sources & Références</div>
-                    <div class="sources-subtitle">Documentation officielle validant les formations professionnelles</div>
-                </div>
+        <!-- Info Panel -->
+        <div class="info-panel">
+            <div class="info-title">📋 Détails de la formation</div>
+            <div class="info-content" id="formationInfo">
+                La formation la plus équilibrée et universelle du football. Deux lignes de quatre compactes, deux attaquants complémentaires.
             </div>
-            <div class="sources-grid">
-                <div class="source-card">
-                    <div class="source-name">Wikipedia - Formation (association football)</div>
-                    <div class="source-desc">Encyclopédie complète des formations avec historique et exemples d'équipes</div>
-                    <a class="source-link" href="https://en.wikipedia.org/wiki/Formation_(association_football)" target="_blank">en.wikipedia.org/wiki/Formation_(association_football)</a>
-                    <div class="source-formations">
-                        <span class="source-formation-tag">4-6-0</span>
-                        <span class="source-formation-tag">3-6-1</span>
-                        <span class="source-formation-tag">5-3-2</span>
-                        <span class="source-formation-tag">4-2-3-1</span>
-                        <span class="source-formation-tag">W-M</span>
-                    </div>
+            <div class="info-example" id="formationExample">
+                Ex: Manchester United (Ferguson), Atlético Madrid (Simeone)
+            </div>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-value" id="statDef">4</div>
+                    <div class="stat-label">Déf</div>
                 </div>
-
-                <div class="source-card">
-                    <div class="source-name">FourFourTwo - Every Modern Formation</div>
-                    <div class="source-desc">Guide complet des formations modernes par le magazine de référence</div>
-                    <a class="source-link" href="https://www.fourfourtwo.com/features/formations-in-football" target="_blank">fourfourtwo.com/features/formations-in-football</a>
-                    <div class="source-formations">
-                        <span class="source-formation-tag">4-3-3</span>
-                        <span class="source-formation-tag">4-2-2-2</span>
-                        <span class="source-formation-tag">4-1-2-1-2</span>
-                        <span class="source-formation-tag">4-3-2-1</span>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="statMid">4</div>
+                    <div class="stat-label">Mil</div>
                 </div>
-
-                <div class="source-card">
-                    <div class="source-name">The PFSA - 15 Most Used Formations</div>
-                    <div class="source-desc">Professional Football Scouts Association - Formations les plus utilisées</div>
-                    <a class="source-link" href="https://thepfsa.co.uk/football-formations/" target="_blank">thepfsa.co.uk/football-formations</a>
-                    <div class="source-formations">
-                        <span class="source-formation-tag">4-4-2</span>
-                        <span class="source-formation-tag">4-5-1</span>
-                        <span class="source-formation-tag">3-5-2</span>
-                        <span class="source-formation-tag">3-2-4-1</span>
-                    </div>
-                </div>
-
-                <div class="source-card">
-                    <div class="source-name">Football History - Formation Development</div>
-                    <div class="source-desc">Évolution historique des formations de 1-1-8 à 3-5-2</div>
-                    <a class="source-link" href="https://www.footballhistory.org/formations.html" target="_blank">footballhistory.org/formations.html</a>
-                    <div class="source-formations">
-                        <span class="source-formation-tag">2-3-5</span>
-                        <span class="source-formation-tag">W-M</span>
-                        <span class="source-formation-tag">4-2-4</span>
-                        <span class="source-formation-tag">5-4-1</span>
-                    </div>
-                </div>
-
-                <div class="source-card">
-                    <div class="source-name">Total Football Analysis</div>
-                    <div class="source-desc">Analyses tactiques détaillées des formations professionnelles</div>
-                    <a class="source-link" href="https://totalfootballanalysis.com/analysis/formations/" target="_blank">totalfootballanalysis.com/analysis/formations</a>
-                    <div class="source-formations">
-                        <span class="source-formation-tag">3-4-3</span>
-                        <span class="source-formation-tag">3-4-2-1</span>
-                        <span class="source-formation-tag">4-1-4-1</span>
-                    </div>
-                </div>
-
-                <div class="source-card">
-                    <div class="source-name">Spized - Football Line-ups Explained</div>
-                    <div class="source-desc">Explication des systèmes de jeu et compositions tactiques</div>
-                    <a class="source-link" href="https://www.spized.com/en/magazin/football-line-ups" target="_blank">spized.com/en/magazin/football-line-ups</a>
-                    <div class="source-formations">
-                        <span class="source-formation-tag">4-4-2 Flat</span>
-                        <span class="source-formation-tag">4-4-2 Diamond</span>
-                        <span class="source-formation-tag">False 9</span>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="statAtt">2</div>
+                    <div class="stat-label">Att</div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // ================================================================
-        // DATABASE COMPLÈTE - 30 FORMATIONS PROFESSIONNELLES
-        // Sources: Wikipedia, FourFourTwo, The PFSA, Football History,
-        //          Total Football Analysis, Spized
-        // ================================================================
+        // Database of all 30 formations
         const formations = {
-            // ============================================
-            // 3 DÉFENSEURS (11 formations)
-            // ============================================
             "3-5-2": {
                 name: "Wingbacks",
-                category: "3 Défenseurs",
                 description: "Trois défenseurs centraux avec deux pistons latéraux qui couvrent toute la longueur du terrain. Formation très populaire en Serie A.",
                 example: "Juventus (Conte), Inter Milan (Inzaghi), Italie (Lippi, WC 2006)",
-                tags: ["balanced"],
                 stats: { def: 3, mid: 5, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -858,10 +549,8 @@
             },
             "3-4-3": {
                 name: "Total Football",
-                category: "3 Défenseurs",
                 description: "Trois attaquants avec quatre milieux. Formation très offensive qui nécessite des défenseurs centraux rapides et un pressing haut.",
                 example: "Chelsea (Conte 2016-17), Ajax (Cruyff), Pays-Bas (1974)",
-                tags: ["offensive"],
                 stats: { def: 3, mid: 4, att: 3 },
                 positions: [
                     { top: 93, left: 50 },
@@ -872,10 +561,8 @@
             },
             "3-4-3d": {
                 name: "Diamond",
-                category: "3 Défenseurs",
                 description: "Variante du 3-4-3 avec milieu en losange. Un CDM, deux relayeurs box-to-box, un CAM créatif.",
                 example: "Napoli (Sarri), Chelsea (Tuchel 2021)",
-                tags: ["offensive"],
                 stats: { def: 3, mid: 4, att: 3 },
                 positions: [
                     { top: 93, left: 50 },
@@ -886,10 +573,8 @@
             },
             "3-5-1-1": {
                 name: "Soutien Profond",
-                category: "3 Défenseurs",
                 description: "Un meneur de jeu (trequartista) positionné derrière l'attaquant de pointe. Excellent pour le jeu de transition.",
                 example: "Atalanta (Gasperini), Udinese",
-                tags: ["balanced"],
                 stats: { def: 3, mid: 5, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -900,10 +585,8 @@
             },
             "3-4-2-1": {
                 name: "Shadow Strikers",
-                category: "3 Défenseurs",
                 description: "Deux attaquants de soutien (shadow strikers) positionnés derrière un avant-centre. Idéal pour les combinaisons rapides.",
                 example: "Tottenham (Pochettino), Angleterre (Southgate)",
-                tags: ["offensive"],
                 stats: { def: 3, mid: 4, att: 3 },
                 positions: [
                     { top: 93, left: 50 },
@@ -914,10 +597,8 @@
             },
             "3-4-1-2": {
                 name: "Trequartista",
-                category: "3 Défenseurs",
                 description: "Un numéro 10 classique derrière deux attaquants. Style italien traditionnel avec un meneur de jeu central.",
                 example: "Lazio (Inzaghi), Argentine (Sabella, WC 2014)",
-                tags: ["offensive"],
                 stats: { def: 3, mid: 4, att: 3 },
                 positions: [
                     { top: 93, left: 50 },
@@ -928,10 +609,8 @@
             },
             "3-1-4-2": {
                 name: "Regista",
-                category: "3 Défenseurs",
                 description: "Un seul milieu défensif (regista) devant la défense qui dicte le tempo. Quatre milieux offensifs pour le contrôle.",
                 example: "AC Milan (Ancelotti avec Pirlo), Italie (2006)",
-                tags: ["balanced"],
                 stats: { def: 3, mid: 5, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -943,10 +622,8 @@
             },
             "3-2-4-1": {
                 name: "Double Pivot",
-                category: "3 Défenseurs",
                 description: "Deux pivots défensifs, quatre milieux offensifs. Formation de transition utilisée par Man City avec Stones en libero.",
                 example: "Manchester City (Guardiola), Brighton (De Zerbi)",
-                tags: ["offensive"],
                 stats: { def: 3, mid: 6, att: 1 },
                 positions: [
                     { top: 93, left: 50 },
@@ -958,10 +635,8 @@
             },
             "3-3-3-1": {
                 name: "Triple Trio",
-                category: "3 Défenseurs",
                 description: "Trois lignes de trois joueurs offrant un équilibre parfait entre défense et attaque. Formation symétrique.",
                 example: "Formations expérimentales, équipes de coupe",
-                tags: ["balanced"],
                 stats: { def: 3, mid: 6, att: 1 },
                 positions: [
                     { top: 93, left: 50 },
@@ -973,10 +648,8 @@
             },
             "3-6-1": {
                 name: "Ultra Défensif",
-                category: "3 Défenseurs",
                 description: "Six milieux pour verrouiller le centre du terrain. Un seul attaquant isolé pour les contre-attaques. Formation de bunker.",
                 example: "Grèce (Otto Rehhagel, Euro 2004 - Champions!)",
-                tags: ["defensive"],
                 stats: { def: 3, mid: 6, att: 1 },
                 positions: [
                     { top: 93, left: 50 },
@@ -987,10 +660,8 @@
             },
             "3-3-2-2": {
                 name: "Pressing Intense",
-                category: "3 Défenseurs",
                 description: "Trois milieux défensifs, deux meneurs offensifs et deux attaquants. Formation agressive pour un pressing haut et des transitions rapides.",
                 example: "RB Leipzig (Nagelsmann), Bayer Leverkusen (Alonso)",
-                tags: ["offensive"],
                 stats: { def: 3, mid: 5, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1000,16 +671,10 @@
                     { top: 26, left: 35 }, { top: 26, left: 65 }
                 ]
             },
-
-            // ============================================
-            // 4 DÉFENSEURS (13 formations)
-            // ============================================
             "4-4-2": {
                 name: "Classique",
-                category: "4 Défenseurs",
                 description: "La formation la plus équilibrée et universelle du football. Deux lignes de quatre compactes, deux attaquants complémentaires.",
                 example: "Manchester United (Ferguson), Atlético Madrid (Simeone), Leicester (Ranieri, 2016)",
-                tags: ["balanced"],
                 stats: { def: 4, mid: 4, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1020,10 +685,8 @@
             },
             "4-1-2-1-2": {
                 name: "Losange / Diamond",
-                category: "4 Défenseurs",
                 description: "Milieu en losange (diamond). Un CDM ancre, deux relayeurs box-to-box, un CAM créatif et deux attaquants.",
                 example: "AC Milan (Ancelotti, UCL 2003), Liverpool (Rodgers 2013-14)",
-                tags: ["offensive"],
                 stats: { def: 4, mid: 4, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1036,10 +699,8 @@
             },
             "4-3-3": {
                 name: "Offensif",
-                category: "4 Défenseurs",
                 description: "Trois attaquants pour une pression constante. Formation de possession et de jeu sur les ailes. La plus populaire au haut niveau.",
                 example: "Barcelona (Guardiola), Liverpool (Klopp), Ajax (1970s), Pays-Bas (1988)",
-                tags: ["offensive"],
                 stats: { def: 4, mid: 3, att: 3 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1050,10 +711,8 @@
             },
             "4-5-1": {
                 name: "Compact",
-                category: "4 Défenseurs",
                 description: "Cinq milieux pour le contrôle total du centre. Un seul attaquant pivot. Idéal pour le contre-pressing et les transitions.",
                 example: "Chelsea (Mourinho 2004-05), Portugal (Santos, Euro 2016 - Champions!)",
-                tags: ["defensive"],
                 stats: { def: 4, mid: 5, att: 1 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1064,10 +723,8 @@
             },
             "4-4-1-1": {
                 name: "Soutien",
-                category: "4 Défenseurs",
                 description: "Un attaquant de soutien (second striker/numéro 10) positionné derrière la pointe. Variante du 4-4-2 avec plus de créativité.",
                 example: "Arsenal (Wenger, Invincibles 2003-04 avec Bergkamp)",
-                tags: ["balanced"],
                 stats: { def: 4, mid: 4, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1078,10 +735,8 @@
             },
             "4-1-4-1": {
                 name: "Sentinelle",
-                category: "4 Défenseurs",
                 description: "Un milieu défensif seul (ancre/sentinelle) devant la défense. Protection maximale contre les contre-attaques adverses.",
                 example: "Real Madrid (Mourinho avec Makelele), Chelsea (Conte)",
-                tags: ["defensive"],
                 stats: { def: 4, mid: 5, att: 1 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1093,10 +748,8 @@
             },
             "4-2-3-1": {
                 name: "Moderne",
-                category: "4 Défenseurs",
                 description: "Double pivot défensif, un meneur de jeu et trois offensifs. La formation la plus populaire du football moderne.",
                 example: "Allemagne (Löw, WC 2014), Real Madrid (Zidane), Borussia Dortmund (Klopp)",
-                tags: ["balanced"],
                 stats: { def: 4, mid: 5, att: 1 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1108,10 +761,8 @@
             },
             "4-3-2-1": {
                 name: "Arbre de Noël",
-                category: "4 Défenseurs",
                 description: "Formation en forme de sapin (Christmas Tree). Trois milieux, deux meneurs offensifs, un attaquant de pointe.",
                 example: "AC Milan (Ancelotti avec Kaká/Pirlo), Espagne (Del Bosque, WC 2010)",
-                tags: ["balanced"],
                 stats: { def: 4, mid: 5, att: 1 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1123,10 +774,8 @@
             },
             "4-2-2-2": {
                 name: "Box Midfield",
-                category: "4 Défenseurs",
                 description: "Milieu en carré (box/magic rectangle). Deux pivots, deux meneurs et deux attaquants. Style Red Bull/Rangnick.",
                 example: "Brésil (Zagallo, WC 1998), Leeds (Marsch), RB Leipzig (Rangnick)",
-                tags: ["offensive"],
                 stats: { def: 4, mid: 4, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1138,10 +787,8 @@
             },
             "4-1-3-2": {
                 name: "Support Offensif",
-                category: "4 Défenseurs",
                 description: "Un pivot défensif, trois milieux offensifs créatifs et deux attaquants. Formation très offensive avec largeur.",
                 example: "Real Madrid (Pellegrini), Villarreal (Pellegrini)",
-                tags: ["offensive"],
                 stats: { def: 4, mid: 4, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1153,10 +800,8 @@
             },
             "4-2-4": {
                 name: "Ultra Offensif",
-                category: "4 Défenseurs",
                 description: "Quatre attaquants! Formation historique ultra-offensive. Deux milieux doivent couvrir tout le terrain.",
                 example: "Brésil (Feola, WC 1958 avec Pelé - Champions!), Brésil (Zagallo, WC 1970)",
-                tags: ["offensive"],
                 stats: { def: 4, mid: 2, att: 4 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1167,10 +812,8 @@
             },
             "4-3-1-2": {
                 name: "Étroit",
-                category: "4 Défenseurs",
                 description: "Trois milieux, un meneur central et deux attaquants rapprochés. Jeu très axial, idéal pour les passes courtes.",
                 example: "Juventus (Allegri), Inter Milan (Mourinho 2010)",
-                tags: ["offensive"],
                 stats: { def: 4, mid: 4, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1182,10 +825,8 @@
             },
             "4-6-0": {
                 name: "Sans Attaquant (False 9)",
-                category: "4 Défenseurs",
                 description: "Six milieux, aucun attaquant fixe. Utilise un faux 9 (false nine) ou des attaquants très mobiles. Formation révolutionnaire.",
                 example: "Roma (Spalletti avec Totti), Espagne (Del Bosque, Euro 2012 - Champions!), Man United (Ferguson 2008)",
-                tags: ["offensive"],
                 stats: { def: 4, mid: 6, att: 0 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1194,16 +835,10 @@
                     { top: 38, left: 35 }, { top: 38, left: 65 }
                 ]
             },
-
-            // ============================================
-            // 5 DÉFENSEURS (6 formations)
-            // ============================================
             "5-3-2": {
                 name: "Défensif Moderne",
-                category: "5 Défenseurs",
                 description: "Trois centraux + deux latéraux offensifs. Trois milieux centraux compacts et deux attaquants. Très populaire en Italie.",
                 example: "Inter Milan (Conte, Scudetto 2021), Italie (Mancini, Euro 2020 - Champions!)",
-                tags: ["defensive"],
                 stats: { def: 5, mid: 3, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1214,10 +849,8 @@
             },
             "5-4-1": {
                 name: "Bunker / Catenaccio",
-                category: "5 Défenseurs",
                 description: "Formation ultra défensive héritée du Catenaccio italien. Cinq défenseurs, quatre milieux, un attaquant isolé pour les contres.",
                 example: "Inter Milan (Herrera, 1960s), Grèce (Rehhagel, Euro 2004)",
-                tags: ["defensive"],
                 stats: { def: 5, mid: 4, att: 1 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1228,10 +861,8 @@
             },
             "5-2-1-2": {
                 name: "Verrou",
-                category: "5 Défenseurs",
                 description: "Double pivot défensif, un meneur de jeu et deux attaquants. Base très solide avec options offensives centrales.",
                 example: "West Brom (Pulis), équipes en situation de relégation",
-                tags: ["defensive"],
                 stats: { def: 5, mid: 3, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1243,10 +874,8 @@
             },
             "5-2-3": {
                 name: "Contre-Attaque",
-                category: "5 Défenseurs",
                 description: "Défense solide à cinq avec trois attaquants pour les transitions rapides. Idéal contre les équipes dominantes.",
                 example: "Australie (Hiddink, WC 2006), équipes outsiders en Coupe",
-                tags: ["balanced"],
                 stats: { def: 5, mid: 2, att: 3 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1257,10 +886,8 @@
             },
             "5-1-2-2": {
                 name: "Libero",
-                category: "5 Défenseurs",
                 description: "Un seul pivot devant la défense (libero moderne), deux box-to-box et deux attaquants. Style allemand classique.",
                 example: "Allemagne (Beckenbauer, WC 1990 - Champions!), Bayern Munich (90s)",
-                tags: ["defensive"],
                 stats: { def: 5, mid: 3, att: 2 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1272,10 +899,8 @@
             },
             "5-2-2-1": {
                 name: "Catenaccio Moderne",
-                category: "5 Défenseurs",
                 description: "Deux CDM protecteurs, deux CAM créatifs et un attaquant pivot. Équilibre entre solidité défensive et transition offensive.",
                 example: "Équipes italiennes modernes, Sampdoria",
-                tags: ["defensive"],
                 stats: { def: 5, mid: 4, att: 1 },
                 positions: [
                     { top: 93, left: 50 },
@@ -1287,110 +912,69 @@
             }
         };
 
-        // ============================================
-        // FONCTIONS
-        // ============================================
-        function getCategories() {
-            const categories = {};
-            Object.entries(formations).forEach(([key, value]) => {
-                if (!categories[value.category]) {
-                    categories[value.category] = [];
-                }
-                categories[value.category].push(key);
-            });
-            return categories;
-        }
-
-        function renderFormations(filter = '') {
-            const container = document.getElementById('formationsContainer');
-            const categories = getCategories();
-            container.innerHTML = '';
-            const categoryOrder = ['3 Défenseurs', '4 Défenseurs', '5 Défenseurs'];
-            let totalVisible = 0;
-
-            categoryOrder.forEach(category => {
-                const formationKeys = categories[category] || [];
-                const filteredKeys = formationKeys.filter(key => {
-                    const f = formations[key];
-                    const displayKey = key.replace('d', ' Diamond');
-                    return displayKey.toLowerCase().includes(filter.toLowerCase()) ||
-                           f.name.toLowerCase().includes(filter.toLowerCase()) ||
-                           f.example.toLowerCase().includes(filter.toLowerCase());
-                });
-
-                if (filteredKeys.length === 0) return;
-                totalVisible += filteredKeys.length;
-
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'category';
-                categoryDiv.innerHTML = `
-                    <div class="category-title">
-                        ${category}
-                        <span class="category-count">${filteredKeys.length}</span>
-                    </div>
-                    <div class="formation-grid">
-                        ${filteredKeys.map(key => {
-                            const displayName = key === '3-4-3d' ? '3-4-3 ◆' : key;
-                            return `<button class="formation-btn" data-formation="${key}">${displayName}</button>`;
-                        }).join('')}
-                    </div>
-                `;
-                container.appendChild(categoryDiv);
-            });
-
-            document.getElementById('totalCount').textContent = `${totalVisible} formations`;
-            document.querySelectorAll('.formation-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    setFormation(btn.dataset.formation);
-                });
-            });
-        }
+        // Position labels mapping
+        const positionLabels = {
+            1: { label: 'GK', name: 'Gardien', type: 'goalkeeper' },
+            2: { label: 'DF', name: 'Défenseur', type: 'defender' },
+            3: { label: 'DF', name: 'Défenseur', type: 'defender' },
+            4: { label: 'DF', name: 'Défenseur', type: 'defender' },
+            5: { label: 'DF', name: 'Défenseur', type: 'defender' },
+            6: { label: 'MI', name: 'Milieu', type: 'midfielder' },
+            7: { label: 'MI', name: 'Milieu', type: 'midfielder' },
+            8: { label: 'MI', name: 'Milieu', type: 'midfielder' },
+            9: { label: 'MI', name: 'Milieu', type: 'midfielder' },
+            10: { label: 'AT', name: 'Attaquant', type: 'attacker' },
+            11: { label: 'AT', name: 'Attaquant', type: 'attacker' }
+        };
 
         function setFormation(formationKey) {
             const formation = formations[formationKey];
             if (!formation) return;
 
-            const displayKey = formationKey === '3-4-3d' ? '3-4-3 Diamond' : formationKey;
-            document.getElementById('currentFormation').textContent = displayKey;
             document.getElementById('formationName').textContent = formation.name;
-            document.getElementById('formationExample').textContent = `${formation.example}`;
             document.getElementById('formationInfo').textContent = formation.description;
+            document.getElementById('formationExample').textContent = `Ex: ${formation.example}`;
             document.getElementById('statDef').textContent = formation.stats.def;
             document.getElementById('statMid').textContent = formation.stats.mid;
             document.getElementById('statAtt').textContent = formation.stats.att;
 
-            const tagsContainer = document.getElementById('formationTags');
-            const tagLabels = {
-                offensive: 'Offensif',
-                defensive: 'Défensif',
-                balanced: 'Équilibré'
-            };
-            tagsContainer.innerHTML = formation.tags.map(tag =>
-                `<span class="info-tag ${tag}">${tagLabels[tag]}</span>`
-            ).join('');
-
-            document.querySelectorAll('.formation-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.formation === formationKey);
-            });
-
+            // Update player positions and labels
             formation.positions.forEach((pos, index) => {
-                const player = document.getElementById(`player${index + 1}`);
-                if (player) {
+                const playerNum = index + 1;
+                const player = document.getElementById(`player${playerNum}`);
+                const posInfo = positionLabels[playerNum];
+
+                if (player && posInfo) {
                     player.style.top = `${pos.top}%`;
                     player.style.left = `${pos.left}%`;
                     player.style.transform = 'translate(-50%, -50%)';
+
+                    const avatar = player.querySelector('.player-avatar');
+                    const nameDiv = player.querySelector('.player-name');
+
+                    if (avatar) {
+                        avatar.childNodes[0].textContent = posInfo.label;
+                    }
+                    if (nameDiv) {
+                        nameDiv.textContent = posInfo.name;
+                    }
+
+                    // Update goalkeeper class
+                    if (posInfo.type === 'goalkeeper') {
+                        player.classList.add('goalkeeper');
+                    } else {
+                        player.classList.remove('goalkeeper');
+                    }
                 }
             });
         }
 
-        // ============================================
-        // INITIALISATION
-        // ============================================
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            renderFormations(e.target.value);
+        // Event listener for dropdown
+        document.getElementById('formationSelect').addEventListener('change', (e) => {
+            setFormation(e.target.value);
         });
 
-        renderFormations();
+        // Initialize with default formation
         setFormation('4-4-2');
     </script>
 </body>
